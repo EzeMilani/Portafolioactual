@@ -1,0 +1,839 @@
+/* Define los mismos colores en todo el código */
+        :root {
+    --color-bg: #1A1A2E;         
+    --color-sidebar: #282A36;    
+    --color-primary: #4A90E2;    
+    --color-text: #FFFFFF;       
+    --color-subtext: #B0B3BC;    
+    --color-Shadow: #3C7DCF;
+    --color-hover: #2763ad;     
+}
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif; /* Usando Inter para una tipografía moderna */
+            background: var(--color-bg);
+            color: var(--color-text);
+            display: flex; /* Cambiado a flex para facilitar el diseño */
+            flex-direction: column;
+            min-height: 100vh;
+            font-size: 1.0rem;
+        }
+
+        /* Barra de Navegación */
+        nav {
+            background-color: var(--color-sidebar);
+            width: 100%; /* Ancho completo */
+            padding: 5px 20px; /* Relleno ajustado para hacerla más pequeña */
+            display: flex;
+            justify-content: space-between; /* Espacio entre el logo y los enlaces */
+            align-items: center; /* Alinear elementos verticalmente */
+            gap: 8px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+            position: sticky; /* Hace que la navegación sea pegajosa */
+            top: 0;
+            z-index: 1000; /* Asegura que permanezca en la parte superior */
+        }
+
+        /* Estilo del logo en la Navegación */
+        nav .logo {
+            font-family: 'Montserrat', sans-serif; /* Fuente impactante y no cursiva para el logo */
+            font-weight: 800; /* Grosor de fuente más grueso para mayor impacto */
+            font-size: 2.5rem; /* Tamaño ajustado para Montserrat */
+            color: var(--color-primary); /* Color principal */
+            text-shadow: 0 0 10px var(--color-Shadow), 0 0 20px var(--color-Shadow); /* Sombra intensa */
+            user-select: none; /* Evita que el texto sea seleccionable */
+            cursor: default; /* Indica que no es un elemento clicable */
+            padding: 5px 0; /* Pequeño relleno vertical */
+            transition: transform 0.3s ease; /* Transición para el efecto hover */
+        }
+
+        /* Efecto hover para el logo */
+        nav .logo:hover {
+            transform: translateY(-5px); /* Pequeño movimiento hacia arriba al pasar el ratón */
+        }
+
+        /* Contenedor para enlaces de navegación */
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Estilo para enlaces de navegación individuales */
+        nav a {
+            color: var(--color-subtext);
+            text-decoration: none;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.3s, color 0.3s;
+            border-radius: 20px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: #40444B;
+            color: var(--color-primary);
+        }
+
+        nav i {
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Contenido principal */
+        main {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            display: flex; /* Usar flex para centrar el contenido de la sección */
+            justify-content: center;
+            align-items: flex-start; /* Alinear a la parte superior para contenido más largo */
+            flex-direction: column; /* Apilar secciones verticalmente */
+            align-items: center; /* Centrar secciones horizontalmente */
+        }
+
+        section {
+            display: block; /* Siempre visible para un diseño de una sola página */
+            max-width: 1050px;
+            width: 100%;
+            animation: fade 0.5s ease;
+            padding: 90px 20px; /* Relleno ajustado */
+            background-color: var(--color-bg);
+            border-radius: 15px;
+            margin-bottom: 40px; /* Espacio entre secciones */
+            scroll-margin-top: 85px; /* Ajustar para la barra de navegación fija al desplazarse a la sección */
+        }
+
+        /* Títulos de sección */
+        h2 {
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        /* Párrafos generales */
+        p {
+            color: var(--color-subtext);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Animación de desvanecimiento */
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilos de la sección "Sobre mí" */
+        .perfil-card {
+            background-color: var(--color-sidebar);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 1050px;
+            margin: 30px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+            box-shadow: 0 8px 25px var(--color-Shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .perfil-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .perfil-foto img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--color-primary);
+            box-shadow: 0 0 20px var(--color-Shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .perfil-foto img:hover {
+            transform: translateY(-10px); /* Animación al pasar el cursor sobre la imagen */
+        }
+
+        .perfil-info {
+            flex: 1;
+            min-width: 280px;
+            color: var(--color-subtext);
+            padding-right: 20px;
+        }
+
+        .perfil-info p {
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: var(--color-subtext);
+        }
+
+        .estado {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: #58de41;
+            font-size: 1.1rem;
+        }
+
+        .punto-online {
+            width: 12px;
+            height: 12px;
+            background-color: #00ff8c;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 140, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 255, 140, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 140, 0); }
+        }
+
+        .btn-descargar-cv {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 25px;
+            background-color: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px var(--color-Shadow);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            font-size: 1.05rem;
+        }
+
+        .btn-descargar-cv:hover {
+            background-color: var(--color-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--color-Shadow);
+        }
+
+        /* Sección de Formación (anteriormente Educación) */
+        #formacion {
+            padding: 100px 20px; /* Relleno ajustado para ser consistente */
+            color: var(--color-subtext);
+            text-align: center;
+        }
+
+        #formacion .education-item {
+            background-color: var(--color-sidebar);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #formacion .education-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px var(--color-Shadow);
+        }
+
+        #formacion .education-item h3 {
+            color: var(--color-primary);
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        #formacion .education-item p {
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        #formacion .education-item .location {
+            color: var(--color-subtext);
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        #formacion .education-item .location i {
+            color: var(--color-primary);
+            font-size: 0.9rem;
+        }
+
+
+        /* Sección de Habilidades (Técnicas y Blandas) */
+        #habilidades {
+            padding: 80px 20px;
+            color: var(--color-subtext);
+            text-align: center;
+        }
+
+        #habilidades h2 {
+            color: var(--color-primary);
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+        }
+
+        #habilidades p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 40px; /* Espacio antes de la cuadrícula de habilidades técnicas */
+        }
+
+        .habilidades-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 60px auto; /* Mayor margen inferior para separar de las habilidades blandas */
+        }
+
+        .habilidad-card {
+            background-color: var(--color-sidebar);
+            border-radius: 15px;
+            padding: 30px;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+
+        .habilidad-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px var(--color-Shadow);
+        }
+
+        .habilidad-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            background-color: #1e1f22;
+            padding: 5px;
+        }
+
+        .habilidad-card h3 {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Lista de Habilidades Blandas (ahora parte de #habilidades) */
+        #habilidades .soft-skills-title {
+            color: var(--color-primary); /* Mantener el título visible y distinto */
+            font-size: 2.2rem; /* Ligeramente más pequeño que el título de la sección principal */
+            margin-top: 40px; /* Espacio de las habilidades técnicas */
+            margin-bottom: 25px;
+        }
+
+        .soft-skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            list-style: none; /* Eliminar viñetas de lista predeterminadas */
+            padding: 0;
+            margin: 0 auto 60px auto; /* Espacio después de las habilidades blandas antes de las habilidades adicionales */
+            max-width: 800px;
+        }
+
+        .soft-skills-list li {
+            background-color: var(--color-sidebar);
+            border-radius: 10px;
+            padding: 15px 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            color: var(--color-subtext);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .soft-skills-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--color-Shadow);
+        }
+
+        .soft-skills-list li i {
+            color: var(--color-primary);
+            font-size: 1.3rem;
+        }
+
+        /* Habilidades Adicionales */
+        #habilidades .additional-skills-title {
+            color: var(--color-primary);
+            font-size: 2.2rem;
+            margin-top: 40px;
+            margin-bottom: 25px;
+        }
+
+        #habilidades .additional-skills-category {
+            width: 100%; /* Asegura que las categorías ocupen todo el ancho dentro de la sección */
+            text-align: left; /* Alinear el contenido de la categoría a la izquierda */
+        }
+
+        #habilidades .additional-skills-category h4 {
+            color: var(--color-primary);
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            padding-left: 20px; /* Sangrar ligeramente */
+            box-sizing: border-box;
+        }
+
+        #habilidades .additional-skills-category ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        #habilidades .additional-skills-category ul li {
+            color: var(--color-subtext);
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            padding-left: 40px; /* Sangrar elementos de la lista */
+            position: relative;
+        }
+
+        #habilidades .additional-skills-category ul li::before {
+            content: '●'; /* Viñeta personalizada */
+            color: var(--color-primary);
+            position: absolute;
+            left: 20px;
+            font-size: 0.8em;
+            top: 5px;
+        }
+
+
+        /* Sección de Proyectos */
+        #proyectos {
+            padding: 80px 20px;
+            color: var(--color-subtext);
+            text-align: center;
+        }
+
+        #proyectos h2 {
+            color: var(--color-primary);
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+        }
+
+        #proyectos p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .proyecto-item {
+            background-color: var(--color-sidebar);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .proyecto-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px var(--color-Shadow);
+        }
+
+        .proyecto-item h3 {
+            color: var(--color-primary);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .proyecto-item p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .proyecto-item .proyecto-links a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .proyecto-item .proyecto-links a:hover {
+            color: var(--color-text);
+        }
+        .proyecto-preview-img{
+            max-width: 100%; /* Asegura que la imagen sea responsive */
+            width: 700px; /* Tamaño de vista previa deseado */
+            height: auto; /* Mantiene la relación de aspecto */
+            border-radius: 10px; /* Bordes redondeados */
+            border: 2px solid var(--color-primary); /* Borde con el color primario */
+            margin-bottom: 20px; /* Espacio debajo de la imagen */
+            display: block; /* Para que ocupe su propia línea y se pueda centrar */
+            margin-left: auto; /* Centrar la imagen */
+            margin-right: auto; /* Centrar la imagen */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sutil sombra */
+        }
+
+        /* Sección de Contacto */
+        #contacto {
+            padding: 80px 20px;
+            color: var(--color-subtext);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .contacto-contenido {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 50px;
+        }
+
+        .contacto-texto {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .contacto-texto h2 {
+            color: var(--color-primary);
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+        }
+
+        .contacto-texto p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .redes-contacto {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .redes-contacto a {
+            font-size: 2.2rem;
+            color: var(--color-subtext);
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .redes-contacto a:hover {
+            color: var(--color-primary);
+            transform: scale(1.3);
+        }
+
+        .form-contacto {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            background-color: var(--color-sidebar);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px var(--color-Shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .form-contacto:hover {
+            transform: translateY(-10px);
+        }
+
+        .form-contacto label {
+            color: var(--color-subtext);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-contacto input,
+        .form-contacto textarea,
+        .form-contacto select {
+            padding: 16px;
+            font-size: 1.1rem;
+            background-color: #1e1f22;
+            border: 1px solid #40444B;
+            border-radius: 12px;
+            color: var(--color-text);
+            width: 100%;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        input:-webkit-autofill,
+        textarea:-webkit-autofill,
+        select:-webkit-autofill {
+            box-shadow: 0 0 0px 1000px #1e1f22 inset !important;
+            -webkit-text-fill-color: var(--color-text) !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+        
+        .form-contacto select {
+            appearance: none;
+            cursor: pointer;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23B9BBBE" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 18px;
+        }
+
+        .form-contacto input:focus,
+        .form-contacto textarea:focus,
+        .form-contacto select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 42, 0.3);
+        }
+
+        .form-contacto button {
+            padding: 18px;
+            font-size: 1.2rem;
+            background-color: var(--color-primary);
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px var(--color-Shadow);
+        }
+
+        .form-contacto button:hover {
+            background-color: var(--color-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--color-Shadow);
+        }
+
+        /* Pie de página */
+        .footer {
+            background-color:var(--color-sidebar);
+            color: var(--color-sidebar);
+            text-align: center;
+            padding: 25px;
+            margin-top: auto;
+            border-top: 1px solid var(--color-Shadow);
+        }
+
+        .footer-redes {
+            margin-top: 15px;
+        }
+
+        .footer-redes a {
+            display: inline-block;
+            color: var(--color-subtext);
+            margin: 0 12px;
+            font-size: 2.2rem;
+            transition: color 0.3s, transform 0.3s
+        }
+
+        .footer-redes a:hover {
+            color: var(--color-primary);
+            transform: scale(1.3);
+        }
+
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 15px 10px;
+                border-radius: 0;
+            }
+
+            nav .logo {
+                margin: 0;
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                margin: 0;
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            nav a {
+                padding: 0.8rem 0.3rem;
+                flex-direction: column;
+                font-size: 0.75rem;
+                gap: 5px;
+                border-radius: 15px;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 30px 15px;
+            }
+
+            .perfil-card {
+                padding: 30px;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .perfil-info {
+                padding-right: 0;
+            }
+
+            .perfil-foto img {
+                width: 200px;
+                height: 200px;
+                margin-bottom: 20px;
+            }
+
+            .btn-descargar-cv {
+                width: 80%;
+                max-width: 250px;
+            }
+
+            .habilidad-card {
+                width: 150px;
+                padding: 20px;
+            }
+            #formacion .education-item {
+                padding: 20px;
+            }
+            #formacion .education-item h3 {
+                font-size: 1.4rem;
+            }
+            .soft-skills-list li {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            .soft-skills-list li i {
+                font-size: 1.1rem;
+            }
+            #habilidades .additional-skills-category h4 {
+                font-size: 1.2rem;
+                padding-left: 10px;
+            }
+            #habilidades .additional-skills-category ul li {
+                font-size: 0.9rem;
+                padding-left: 30px;
+            }
+            #habilidades .additional-skills-category ul li::before {
+                left: 10px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            h2 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .contacto-contenido {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .contacto-texto h2 {
+                font-size: 2.2rem;
+            }
+
+            .contacto-texto p {
+                font-size: 1.1rem;
+            }
+
+            .redes-contacto {
+                gap: 15px;
+            }
+
+            .redes-contacto a {
+                font-size: 1.8rem;
+            }
+
+            .form-contacto {
+                width: 95%;
+                padding: 25px;
+            }
+
+            .form-contacto input,
+            .form-contacto textarea,
+            .form-contacto select,
+            .form-contacto button {
+                font-size: 1rem;
+                padding: 14px;
+            }
+            .habilidad-card {
+                width: 120px;
+                padding: 15px;
+                gap: 10px;
+            }
+            .habilidad-card img {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 10px;
+            }
+            .habilidad-card h3 {
+                font-size: 1.2rem;
+            }
+            #formacion .education-item {
+                padding: 15px;
+            }
+            #formacion .education-item h3 {
+                font-size: 1.2rem;
+            }
+            #formacion .education-item p {
+                font-size: 0.9rem;
+            }
+            #formacion .education-item .location {
+                font-size: 0.8rem;
+            }
+            .soft-skills-list li {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            .soft-skills-list li i {
+                font-size: 1rem;
+            }
+            #habilidades .additional-skills-category h4 {
+                font-size: 1rem;
+                padding-left: 5px;
+            }
+            #habilidades .additional-skills-category ul li {
+                font-size: 0.8rem;
+                padding-left: 20px;
+            }
+            #habilidades .additional-skills-category ul li::before {
+                left: 5px;
+            }
+        }
